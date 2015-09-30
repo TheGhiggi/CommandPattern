@@ -12,6 +12,8 @@ import javax.swing.JButton;
 /**
  *
  * @author ghiggi
+ * 
+ * Essa classe é o receptor. O receptor conhece todas as ações para que o jogo funcione. As ações serão executadas nele.
  */
 public class GameCommands {
     

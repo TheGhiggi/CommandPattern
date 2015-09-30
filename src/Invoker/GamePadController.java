@@ -10,6 +10,9 @@ import command.Command;
 /**
  *
  * @author ghiggi
+ * 
+ * Essa classe é o invoker, que é responsável por executar um comando solicitado. Ela não conhece o que o comando solicitado faz, mas faz 
+ * este ser entregue a quem saiba.
  */
 public class GamePadController {
     Command buttonAction;

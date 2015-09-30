@@ -18,6 +18,10 @@ import javax.swing.JFrame;
 /**
  *
  * @author ghiggi
+ * 
+ * Essa classe é o cliente. Ela é responsável por criar o comando concreto e pela definição do receptor.
+ * No caso deste exemplo, o receptor é a classe GameCommands, que contem todos os metodos de comandos do jogo.
+ * Os métodos desta classe foram encapsulados como Comandos completos, para que o nosso cliente possa executalos mesmo sem conhece-los.
  */
 public class GamePadDesign extends JFrame {
     GamePadController gpc = new GamePadController();
