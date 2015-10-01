@@ -24,7 +24,6 @@ import javax.swing.JFrame;
  * Os métodos desta classe foram encapsulados como Comandos completos, para que o nosso cliente possa executalos mesmo sem conhece-los.
  */
 public class GamePadDesign extends JFrame {
-    GamePadController gpc = new GamePadController();
     
     GameCommands gpcommands = new GameCommands();
     
@@ -52,10 +51,14 @@ public class GamePadDesign extends JFrame {
         getContentPane().add(buttonSelect = getJbutton(260, 100, 40, 20));
         getContentPane().add(buttonStart = getJbutton(205, 100, 40, 20));
         
+        /*
+        
+        Modo antigo adicionando as actions listners direto no 
         buttonUp.addActionListener((ActionEvent e) -> {
             gpc.setCommand(btnUpCommand);
             gpc.buttonWasPressed();            
         });
+        
         
         buttonDown.addActionListener((ActionEvent e) -> {
             gpc.setCommand(btnDownCommand);
@@ -70,7 +73,12 @@ public class GamePadDesign extends JFrame {
         buttonRight.addActionListener((ActionEvent e) -> {
             gpc.setCommand(btnRightCommand);
             gpc.buttonWasPressed();            
-        });
+        });*/
+        
+        buttonDown.addActionListener( new GamePadController(btnDownCommand));
+        buttonUp.addActionListener( new GamePadController(btnUpCommand));
+        buttonLeft.addActionListener( new GamePadController(btnLeftCommand));
+        buttonRight.addActionListener( new GamePadController(btnRightCommand));
         
         setVisible(true);
     }

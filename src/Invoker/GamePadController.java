@@ -6,6 +6,8 @@
 package Invoker;
 
 import command.Command;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
 
 /**
  *
@@ -14,14 +16,23 @@ import command.Command;
  * Essa classe é o invoker, que é responsável por executar um comando solicitado. Ela não conhece o que o comando solicitado faz, mas faz 
  * este ser entregue a quem saiba.
  */
-public class GamePadController {
+public class GamePadController extends AbstractAction {
     Command buttonAction;
+    
+    public GamePadController(Command buttonAction){
+        this.buttonAction = buttonAction;
+    }
     
     public void setCommand(Command command){
         buttonAction = command;
     }
     
     public void buttonWasPressed(){
+        buttonAction.execute();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
         buttonAction.execute();
     }
     
