@@ -22,14 +22,6 @@ public class GamePadController extends AbstractAction {
     public GamePadController(Command buttonAction){
         this.buttonAction = buttonAction;
     }
-    
-    public void setCommand(Command command){
-        buttonAction = command;
-    }
-    
-    public void buttonWasPressed(){
-        buttonAction.execute();
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
