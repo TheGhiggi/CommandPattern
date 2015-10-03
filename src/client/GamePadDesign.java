@@ -1,4 +1,4 @@
-/*
+/*  
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,7 +11,7 @@ import commandComplete.ButtonDownCommand;
 import commandComplete.ButtonLeftCommand;
 import commandComplete.ButtonRightCommand;
 import commandComplete.ButtonUpCommand;
-import java.awt.event.ActionEvent;
+import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -25,8 +25,10 @@ import javax.swing.JFrame;
  */
 public class GamePadDesign extends JFrame {
     
+    //Receiver
     GameCommands gpcommands = new GameCommands();
     
+    //Command complete
     ButtonDownCommand btnDownCommand = new ButtonDownCommand(gpcommands);
     ButtonUpCommand btnUpCommand = new ButtonUpCommand(gpcommands);
     ButtonLeftCommand btnLeftCommand = new ButtonLeftCommand(gpcommands);
@@ -40,41 +42,19 @@ public class GamePadDesign extends JFrame {
         setLocationRelativeTo(this);
         setLayout(null);
         
-        getContentPane().add(buttonA = getJbutton(340, 90, 55, 55));
-        getContentPane().add(buttonB = getJbutton(410, 90, 55, 55));
-        getContentPane().add(buttonSpecial = getJbutton(80, 75, 40, 40));
+        buttonA = getJbutton(340, 90, 55, 55, "A");
+        buttonB = getJbutton(410, 90, 55, 55, "B");
+        buttonSpecial = getJbutton(80, 75, 40, 40, null);
         
-        getContentPane().add(buttonUp = getJbutton(80, 28, 40, 47));
-        getContentPane().add(buttonDown = getJbutton(80, 115, 40, 47));
-        getContentPane().add(buttonLeft = getJbutton(35, 75, 45, 40));
-        getContentPane().add(buttonRight = getJbutton(120, 75, 45, 40));
-        getContentPane().add(buttonSelect = getJbutton(260, 100, 40, 20));
-        getContentPane().add(buttonStart = getJbutton(205, 100, 40, 20));
-        
-        /*
-        
-        Modo antigo adicionando as actions listners direto no 
-        buttonUp.addActionListener((ActionEvent e) -> {
-            gpc.setCommand(btnUpCommand);
-            gpc.buttonWasPressed();            
-        });
+        buttonUp = getJbutton(80, 28, 40, 47, "/\\");
+        buttonDown = getJbutton(80, 115, 40, 47, "\\/");
+        buttonLeft = getJbutton(35, 75, 45, 40, "<");
+        buttonRight = getJbutton(120, 75, 45, 40, ">");
+        buttonSelect = getJbutton(260, 100, 40, 20, null);
+        buttonStart = getJbutton(205, 100, 40, 20, null);
         
         
-        buttonDown.addActionListener((ActionEvent e) -> {
-            gpc.setCommand(btnDownCommand);
-            gpc.buttonWasPressed();
-        });
-        
-        buttonLeft.addActionListener((ActionEvent e) -> {
-            gpc.setCommand(btnLeftCommand);
-            gpc.buttonWasPressed();            
-        });
-        
-        buttonRight.addActionListener((ActionEvent e) -> {
-            gpc.setCommand(btnRightCommand);
-            gpc.buttonWasPressed();            
-        });*/
-        
+        //invoker
         buttonDown.addActionListener( new GamePadController(btnDownCommand));
         buttonUp.addActionListener( new GamePadController(btnUpCommand));
         buttonLeft.addActionListener( new GamePadController(btnLeftCommand));
@@ -83,9 +63,12 @@ public class GamePadDesign extends JFrame {
         setVisible(true);
     }
     
-    private JButton getJbutton(int x, int y, int height, int width){
+    private JButton getJbutton(int x, int y, int height, int width, String text){
         JButton jb = new JButton();
         jb.setBounds(x, y, height, width);
+        jb.setFont(new Font(null, 2, 10));
+        jb.setText(text);
+        getContentPane().add(jb);
         return jb;
     }
     
